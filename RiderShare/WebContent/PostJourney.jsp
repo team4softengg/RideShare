@@ -9,7 +9,7 @@
 <body>
 <h1> Journey Details</h1>
 
-<form>
+<form method="post">
 <table>
 <tr>
    <td align="left">Date Of journey:</td> 

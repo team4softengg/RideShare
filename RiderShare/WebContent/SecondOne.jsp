@@ -9,7 +9,7 @@
 <body>
 <p align="right"><b>Hello John Kepler</b></p>
 <center><h1>Enter your trip details</h1></center>
-<center><img src="C:\Program Files\Apache Software Foundation\Tomcat 7.0\webapps\map.jpg"/></center>
+<center><img src="<%=request.getServletContext().getContextPath() %>/map.jpg"/></center>
  <form action="address" method="post">
  <table align="center">
 
