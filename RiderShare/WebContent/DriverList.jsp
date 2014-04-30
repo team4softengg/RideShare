@@ -22,41 +22,45 @@
 	<div id="content">
 		<div id="colA">
 			<div id="welcome" class="boxedA">
-				<h2>Ride Confirmation</h2>
-				<%
-					String name = "John kepler";
-					long no = 518434334;
-					//String lang= "English, Spanish";
-					//String license= "DEW123FEWEF";
-					//double Ratings= 4.1;
-					String car_n = "Toyota camry";
-					String car_no = "ABC 1234";
-					//String type = "4 doors";
-				%>
-				</br><h3>Your reservation summary for order ABC123</h3>
-				<div id="container">
-					<div class="r_c">
-						<h2>Driver Details</h2>
-						<p align="left">
-							<b>Name:</b>
-							<%=name%><br /> <b>Phone:</b>
-							<%=no%><br />
-					</div>
-					<div class="r_c">
-						<h2>Car Details</h2>
-						<p align="left">
-							<b>Name:</b>
-							<%=car_n%><br /> <b>Number:</b>
-							<%=car_no%><br />
-					</div>
-					<div class="r_c">
-						<p align="left">
-							<b>Details have been sent to you via sms and email</b><br />
-							<b>Thank you for making a reservation with RideShare</b><br />
-							<b>This confirms your reservation</b><br />
-					</div>
+				<h2>Driver Distance</h2>
+				<form method="post"
+					action="<%=response.encodeUrl(request.getContextPath()
+					+ "/ControllerLevel2?action=journeyplan")%>">
 
-				</div>
+					<%
+						String[] name = { "John Kepler", "Kim lohan", "Ankit Jain",
+								"Kathy Nolan" };
+						String[] dist = { "1.2 miles", "1.3 miles", "3.5 miles",
+								"4.7 miles" };
+					%>
+					<table align="center">
+						<tr>
+							<td><h2>Name</h2></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td><h2>Distance</h2></td>
+						</tr>
+
+						<%
+							for (int i = 0; i < name.length; i++) {
+						%>
+						<tr></tr>
+						<tr></tr>
+						<tr>
+							<td><a href="DriverInfo.jsp"><%=name[i]%></a></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td><font size="5"><%=dist[i]%></font></td>
+						</tr>
+						<%
+							}
+						%>
+					</table>
+
+
+				</form>
 			</div>
 
 			<div id="news" class="boxedA">

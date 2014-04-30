@@ -22,41 +22,44 @@
 	<div id="content">
 		<div id="colA">
 			<div id="welcome" class="boxedA">
-				<h2>Ride Confirmation</h2>
-				<%
-					String name = "John kepler";
-					long no = 518434334;
-					//String lang= "English, Spanish";
-					//String license= "DEW123FEWEF";
-					//double Ratings= 4.1;
-					String car_n = "Toyota camry";
-					String car_no = "ABC 1234";
-					//String type = "4 doors";
-				%>
-				</br><h3>Your reservation summary for order ABC123</h3>
-				<div id="container">
-					<div class="r_c">
-						<h2>Driver Details</h2>
-						<p align="left">
-							<b>Name:</b>
-							<%=name%><br /> <b>Phone:</b>
-							<%=no%><br />
-					</div>
-					<div class="r_c">
-						<h2>Car Details</h2>
-						<p align="left">
-							<b>Name:</b>
-							<%=car_n%><br /> <b>Number:</b>
-							<%=car_no%><br />
-					</div>
-					<div class="r_c">
-						<p align="left">
-							<b>Details have been sent to you via sms and email</b><br />
-							<b>Thank you for making a reservation with RideShare</b><br />
-							<b>This confirms your reservation</b><br />
-					</div>
+				<h2>Driver Information</h2>
+					<%
+						String name = "John Kepler";
+						long no = 518434334;
+						String lang = "English, Spanish";
+						String license = "DEW123FEWEF";
+						String car = "Ford Fusion";
+						int seats = 3;
+						String ETA = "17 min";
+					%>
 
-				</div>
+
+					<p align="left">
+					<h4>
+						<b>Name:</b>
+						<%=name%></h4>
+					<h4>
+						<b>Phone:</b>
+						<%=no%></h4>
+					<h4>
+						<b>Languages:</b>
+						<%=lang%></h4>
+					<h4>
+						<b>License:</b>
+						<%=license%></h4>
+					<h4>
+						<b>Car:</b>
+						<%=car%></h4>
+					<h4>
+						<b>Seats:</b><%=seats%></h4>
+					<h4>
+						<b>ETA:</b><%=ETA%></h4>
+					<h4>
+						<INPUT TYPE="SUBMIT" NAME="submit" VALUE="Select Driver"
+							onClick="javascript:window.location='Confirmation.jsp'">
+					</h4>
+						<img src="images/carmain.jpg" />
+				
 			</div>
 
 			<div id="news" class="boxedA">

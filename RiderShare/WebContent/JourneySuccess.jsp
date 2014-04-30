@@ -4,15 +4,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Journey Planner</title>
+<title>Journey Details</title>
 </head>
 <link rel="stylesheet" type="text/css" href="NewFile.css">
 <body>
 	<div id="menu">
 		<ul>
-			<li class="first"><a href="#" id="menu1" accesskey="1" title="">Home</a></li>
+			<li class="first"><a href="HomePage.jsp" id="menu1" accesskey="1" title="">Home</a></li>
 			<li><a href="#" id="menu2" accesskey="2" title="">About The
 					Project</a></li>
+			<li><a href="#" id="menu3" accesskey="3" title="">Login
+					(Driver)</a></li>
 		</ul>
 	</div>
 	<br>
@@ -22,43 +24,10 @@
 	<div id="content">
 		<div id="colA">
 			<div id="welcome" class="boxedA">
-				<h2>Ride Confirmation</h2>
-				<%
-					String name = "John kepler";
-					long no = 518434334;
-					//String lang= "English, Spanish";
-					//String license= "DEW123FEWEF";
-					//double Ratings= 4.1;
-					String car_n = "Toyota camry";
-					String car_no = "ABC 1234";
-					//String type = "4 doors";
-				%>
-				</br><h3>Your reservation summary for order ABC123</h3>
-				<div id="container">
-					<div class="r_c">
-						<h2>Driver Details</h2>
-						<p align="left">
-							<b>Name:</b>
-							<%=name%><br /> <b>Phone:</b>
-							<%=no%><br />
-					</div>
-					<div class="r_c">
-						<h2>Car Details</h2>
-						<p align="left">
-							<b>Name:</b>
-							<%=car_n%><br /> <b>Number:</b>
-							<%=car_no%><br />
-					</div>
-					<div class="r_c">
-						<p align="left">
-							<b>Details have been sent to you via sms and email</b><br />
-							<b>Thank you for making a reservation with RideShare</b><br />
-							<b>This confirms your reservation</b><br />
-					</div>
+				<h2>Journey Details</h2>
+				<p><b>Your Journey have been submitted successfully</b></p>
 
-				</div>
 			</div>
-
 			<div id="news" class="boxedA">
 				<h2>Live Blog &amp; Updates</h2>
 				<ul>

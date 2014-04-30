@@ -22,41 +22,33 @@
 	<div id="content">
 		<div id="colA">
 			<div id="welcome" class="boxedA">
-				<h2>Ride Confirmation</h2>
-				<%
-					String name = "John kepler";
-					long no = 518434334;
-					//String lang= "English, Spanish";
-					//String license= "DEW123FEWEF";
-					//double Ratings= 4.1;
-					String car_n = "Toyota camry";
-					String car_no = "ABC 1234";
-					//String type = "4 doors";
-				%>
-				</br><h3>Your reservation summary for order ABC123</h3>
-				<div id="container">
-					<div class="r_c">
-						<h2>Driver Details</h2>
-						<p align="left">
-							<b>Name:</b>
-							<%=name%><br /> <b>Phone:</b>
-							<%=no%><br />
-					</div>
-					<div class="r_c">
-						<h2>Car Details</h2>
-						<p align="left">
-							<b>Name:</b>
-							<%=car_n%><br /> <b>Number:</b>
-							<%=car_no%><br />
-					</div>
-					<div class="r_c">
-						<p align="left">
-							<b>Details have been sent to you via sms and email</b><br />
-							<b>Thank you for making a reservation with RideShare</b><br />
-							<b>This confirms your reservation</b><br />
-					</div>
+				<h2>Journey Details</h2>
+				<form method="post"
+					action="<%=response.encodeUrl(request.getContextPath()
+					+ "/ControllerLevel2?action=journeyplan")%>">
 
-				</div>
+					<table>
+						<tr>
+							<td align="left">Date:</td>
+							<td align="left"><input type="text" name="dateofjourney"></td>
+						</tr>
+						<tr>
+							<td align="left">Initial:</td>
+							<td align="left"><input type="text"
+								name="inidest"></td>
+						</tr>
+						<tr>
+							<td align="left">Final:</td>
+							<td align="left"><input type="text" name="findest"></td>
+						</tr>
+
+						<tr>
+							<td align="left"></td>
+							<td align="left"><input type="submit" value="Submit" /></td>
+						</tr>
+					</table>
+
+				</form>
 			</div>
 
 			<div id="news" class="boxedA">
