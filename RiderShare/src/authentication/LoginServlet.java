@@ -36,19 +36,26 @@ public class LoginServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		
-
 		if (action == null) {
 			request.setAttribute("message", "");
-			request.setAttribute("username", "");
+			request.setAttribute("email", "");
 			String loggedIn = (String) session.getAttribute("loggedIn");
 			session.setAttribute("loggedIn", loggedIn);
-			request.getRequestDispatcher("/login.jsp").forward(request, response);
-		}
-		else if(action.equals("userlogin")) {
-			request.setAttribute("username", "");
+			request.getRequestDispatcher("/HomePage.jsp").forward(request, response);
+			
+		} else if (action.equals("driverlogin")) {
+			request.setAttribute("email", "");
 			request.setAttribute("password", "");
 			request.setAttribute("message", "");
-			request.getRequestDispatcher("/login.jsp").forward(request, response);
+			request.getRequestDispatcher("/DriverLogin.jsp").forward(request,
+					response);
+		}
+		else if (action.equals("customerlogin")) {
+			request.setAttribute("email", "");
+			request.setAttribute("password", "");
+			request.setAttribute("message", "");
+			request.getRequestDispatcher("/CustomerLogin.jsp").forward(request,
+					response);
 		}
 		else {
 			out.println("unrecognised action");
@@ -66,49 +73,87 @@ public class LoginServlet extends HttpServlet {
 				HttpSession session = request.getSession();
 				String action = request.getParameter("action");
 
-				if (action == "") {
-					request.setAttribute("username", "");
-					request.setAttribute("message", "");
-					request.getRequestDispatcher("/login.jsp").forward(request, response);
+				if (action == null) {
+					/*request.setAttribute("email", "");
+					request.setAttribute("message", "");*/
+					request.getRequestDispatcher("/HomePage.jsp").forward(request, response);
 				}
 
 				@SuppressWarnings("unused")
 				AuthDAO account = new AuthDAO();
 				
-				if(action.equals("userlogin")) {
-					String username = request.getParameter("username");
+				if(action.equals("driverlogin")) {
+					String email = request.getParameter("email");
 					String password = request.getParameter("password");
-					request.setAttribute("username", username);
+					
+					request.setAttribute("email", email);
 					request.setAttribute("password", "");
 					request.setAttribute("message", "");
 					
-					User user = new User(username, password);
+					User user = new User(email, password);
 					
-					if(!user.validate()) {
-						// Validate data entered
+					if(!user.validate_login()) {
+						// Validate data entered in driver login form
 						request.setAttribute("message", user.getMessage());
-						request.getRequestDispatcher("/login.jsp").forward(request, response);
+						request.getRequestDispatcher("/DriverLogin.jsp").forward(request, response);
 						return;
 					}
 					try {
-						int returnUserID = AuthDAO.checkUserPass(username, password);
+						int returnUserID = AuthDAO.checkDriverPass(email, password);
 						if(returnUserID != -1){
-						User fetch_username = AuthDAO.getUserById(returnUserID);
+						User fetch_username = AuthDAO.getDriverById(returnUserID);
 						
 						if(fetch_username != null) {
 							loggedIn = "true";
 							session.setAttribute("loggedIn", loggedIn);
-							session.setAttribute("fetch_username",fetch_username);
-							request.getRequestDispatcher("/index.jsp").forward(request, response);
+							//session.setAttribute("fetch_username",fetch_username);
+							request.getRequestDispatcher("/PostJourney.jsp").forward(request, response);
 						}
 					}
 						else {
 							request.setAttribute("message", "Username or Password Not Valid");
-							request.getRequestDispatcher("/login.jsp").forward(request, response);
+							request.getRequestDispatcher("/DriverLogin.jsp").forward(request, response);
 						}
 					} catch (SQLException e) {
-						request.setAttribute("email", "Database error: please try again later.");
-						request.getRequestDispatcher("/login.jsp").forward(request, response);
+						request.setAttribute("message", "Database error: Please try again later.");
+						request.getRequestDispatcher("/DriverLogin.jsp").forward(request, response);
+					}
+					
+				} if(action.equals("customerlogin")) {
+					String email = request.getParameter("email");
+					String password = request.getParameter("password");
+					
+					request.setAttribute("email", email);
+					request.setAttribute("password", "");
+					request.setAttribute("message", "");
+					
+					User user = new User(email, password);
+					
+					if(!user.validate_login()) {
+						// Validate data entered in customer login form
+						request.setAttribute("message", user.getMessage());
+						request.getRequestDispatcher("/CustomerLogin.jsp").forward(request, response);
+						return;
+					}
+					try {
+						int returnUserID = AuthDAO.checkCustomerPass(email, password);
+						if(returnUserID != -1){
+						User fetch_username = AuthDAO.getCustomerById(returnUserID);
+						
+						if(fetch_username != null) {
+							loggedIn = "true";
+							session.setAttribute("loggedIn", loggedIn);
+							//session.setAttribute("fetch_username",fetch_username);
+							request.getRequestDispatcher("/PostJourney.jsp").forward(request, response);
+						}
+					}
+						else {
+							request.setAttribute("message", "Username or Password Not Valid");
+							request.getRequestDispatcher("/CustomerLogin.jsp").forward(request, response);
+						}
+					} catch (SQLException e) {
+						request.setAttribute("message", "Database error: Please try again later.");
+						request.getRequestDispatcher("/CustomerLogin.jsp").forward(request, response);
 					}
 					
 				}
