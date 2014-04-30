@@ -1,6 +1,8 @@
 package authentication;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -25,15 +27,32 @@ public class LogoutServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String logout = "You have Logged Out successfully";
-		HttpSession session = request.getSession();
-		request.setAttribute("username", "");
-		request.setAttribute("password", "");
-		request.setAttribute("message", "");
-		String loggedIn = null;
-		session.setAttribute("loggedIn", loggedIn);
-		request.setAttribute("logout", logout);
-		request.getRequestDispatcher("/login.jsp").forward(request, response);
+		//PrintWriter out = response.getWriter();
+		String action = request.getParameter("action");
+		
+		if(action.equals("driverlogout")){
+			String logout = "You have Logged Out successfully";
+			HttpSession session = request.getSession();
+			request.setAttribute("email", "");
+			request.setAttribute("password", "");
+			request.setAttribute("message", "");
+			String loggedIn = null;
+			session.setAttribute("loggedIn", loggedIn);
+			request.setAttribute("logout", logout);
+			request.getRequestDispatcher("/DriverLogin.jsp").forward(request, response);
+			
+		} else if(action.equals("customerlogout")) {
+			
+			String logout = "You have Logged Out successfully";
+			HttpSession session = request.getSession();
+			request.setAttribute("email", "");
+			request.setAttribute("password", "");
+			request.setAttribute("message", "");
+			String loggedIn = null;
+			session.setAttribute("loggedIn", loggedIn);
+			request.setAttribute("logout", logout);
+			request.getRequestDispatcher("/CustomerLogin.jsp").forward(request, response);
+		}
 		
 	}
 
@@ -41,6 +60,11 @@ public class LogoutServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		//PrintWriter out = response.getWriter();
+		String action = request.getParameter("action");
+				
+		if(action.equals("driverlogout")){
 		
 		String logout = "You have Logged Out successfully";
 		HttpSession session = request.getSession();
@@ -50,8 +74,20 @@ public class LogoutServlet extends HttpServlet {
 		String loggedIn = null;
 		session.setAttribute("loggedIn", loggedIn);
 		session.setAttribute("logout", logout);
-		request.getRequestDispatcher("/login.jsp").forward(request, response);
+		request.getRequestDispatcher("/DriverLogin.jsp").forward(request, response);
 		
+	} else if(action.equals("customerlogout")){
+		
+		String logout = "You have Logged Out successfully";
+		HttpSession session = request.getSession();
+		request.setAttribute("username", "");
+		request.setAttribute("password", "");
+		request.setAttribute("message", "");
+		String loggedIn = null;
+		session.setAttribute("loggedIn", loggedIn);
+		session.setAttribute("logout", logout);
+		request.getRequestDispatcher("/CustomerLogin.jsp").forward(request, response);
 	}
+}
 
 }
