@@ -5,16 +5,30 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Journey Planner</title>
+ <style>
+    html, body, #map {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      margin-left:70px;
+    }
+  </style>
 </head>
 <link rel="stylesheet" type="text/css" href="NewFile.css">
 <body>
 	<div id="menu">
+	
 		<ul>
 			<li class="first"><a href="#" id="menu1" accesskey="1" title="">Home</a></li>
 			<li><a href="#" id="menu2" accesskey="2" title="">About The
 					Project</a></li>
 		</ul>
 	</div>
+	<div id="map" align="center" style="width:80%; height:70%">
+
+  <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+  <script src="geolocation/Script.js"></script>
+  </div>
 	<br>
 	<br>
 	<br>
