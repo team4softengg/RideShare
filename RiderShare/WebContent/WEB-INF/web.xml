@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
   <display-name>RIDESHARE</display-name>
-  <welcome-file-list>  
+  <welcome-file-list>
     <welcome-file>LoginServlet</welcome-file>
   </welcome-file-list>
   <servlet>
@@ -33,5 +33,15 @@
   <servlet-mapping>
     <servlet-name>SignupServlet</servlet-name>
     <url-pattern>/SignupServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Rating</display-name>
+    <servlet-name>Rating</servlet-name>
+    <servlet-class>authentication.Rating</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Rating</servlet-name>
+    <url-pattern>/Rating</url-pattern>
   </servlet-mapping>
 </web-app>
